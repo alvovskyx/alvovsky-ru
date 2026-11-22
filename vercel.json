@@ -12,13 +12,23 @@
       "permanent": true
     },
     {
+      "source": "/guardian",
+      "destination": "/privacyguard/",
+      "permanent": true
+    },
+    {
+      "source": "/guardian/:path*",
+      "destination": "/privacyguard/",
+      "permanent": true
+    },
+    {
       "source": "/razbor/",
-      "destination": "/guardian/",
+      "destination": "/privacyguard/",
       "permanent": false
     },
     {
       "source": "/razbor/:path*",
-      "destination": "/guardian/",
+      "destination": "/privacyguard/",
       "permanent": false
     }
   ],
