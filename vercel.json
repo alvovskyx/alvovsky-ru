@@ -17,6 +17,11 @@
       "permanent": true
     },
     {
+      "source": "/guardian/",
+      "destination": "/privacyguard/",
+      "permanent": true
+    },
+    {
       "source": "/guardian/:path*",
       "destination": "/privacyguard/",
       "permanent": true
