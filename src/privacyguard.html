@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1020">
+  <meta name="description" content="Программа для запросов по 152-ФЗ: найти, кто хранит ваши данные, подготовить запрос, отследить ответ и срок. Пилот, ранний доступ.">
+  <title>PrivacyGuard: ваши персональные данные под контролем</title>
+  <link rel="canonical" href="https://alvovsky.ru/privacyguard/">
+  <meta property="og:title" content="PrivacyGuard: ваши персональные данные под контролем">
+  <meta property="og:description" content="Программа для запросов по 152-ФЗ: найти, кто хранит ваши данные, подготовить запрос, отследить ответ и срок. Пилот, ранний доступ.">
+  <meta property="og:url" content="https://alvovsky.ru/privacyguard/">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root{
+      --bg:#080e1b;--bg2:#0d1628;--panel:#111e32;--panel2:#15243a;--line:rgba(190,211,239,.13);
+      --text:#f3f7ff;--muted:#a8b6cb;--soft:#71839d;--accent:#8cf0d0;--accent2:#b7f6e3;
+      --blue:#8ab9ff;--warn:#f2d79a;--radius:22px;--max:1160px;
+      --shadow:0 24px 80px rgba(0,0,0,.28)
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.012em}
+    a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+    .topline{height:4px;background:linear-gradient(90deg,#8cf0d0 0%,#8ab9ff 55%,#8cf0d0 100%)}
+    header{position:sticky;top:0;z-index:20;background:rgba(8,14,27,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;font-weight:760;font-size:19px;letter-spacing:-.04em}.brandmark{width:34px;height:34px;border-radius:11px;background:linear-gradient(145deg,var(--accent),#7ab7ff);display:grid;place-items:center;color:#071321;font-weight:900;font-size:17px;box-shadow:0 0 30px rgba(140,240,208,.18)}
+    .navlinks{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:13px}.navlinks a:hover{color:var(--text)}.navcta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:999px;padding:12px 19px;font-size:14px;font-weight:700;transition:.2s ease;cursor:pointer}.navcta,.btn-primary{background:var(--accent);color:#081522}.navcta:hover,.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}.btn-secondary{border-color:rgba(192,213,241,.24);color:var(--text);background:rgba(255,255,255,.025)}.btn-secondary:hover{border-color:var(--accent);background:rgba(140,240,208,.06)}
+    .hero{padding:94px 0 78px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:680px;height:680px;border-radius:50%;right:-170px;top:-280px;background:radial-gradient(circle,rgba(93,159,227,.18),transparent 68%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:62px;align-items:center;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:22px;height:1px;background:var(--accent)}h1{font-size:clamp(42px,5.4vw,70px);line-height:1.02;letter-spacing:-.065em;margin:23px 0 24px;max-width:690px}h1 span{color:var(--accent)}.lead{font-size:19px;line-height:1.55;color:#c2cee0;max-width:600px;margin:0 0 32px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.micro{margin-top:19px;color:var(--soft);font-size:12px;max-width:520px}
+    .visual{position:relative;min-height:470px;border:1px solid rgba(177,207,243,.16);border-radius:28px;background:linear-gradient(145deg,rgba(21,37,60,.94),rgba(11,21,38,.96));box-shadow:var(--shadow);padding:24px;overflow:hidden}.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(140,240,208,.06),transparent 45%);pointer-events:none}.v-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.live{display:flex;align-items:center;gap:7px;color:var(--accent);font-size:10px}.live:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}.case-title{font-size:22px;font-weight:750;letter-spacing:-.04em;margin:28px 0 5px}.case-sub{font-size:12px;color:var(--muted)}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:23px 0}.metric{padding:14px 13px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:14px}.metric strong{display:block;font-size:24px;letter-spacing:-.06em}.metric span{font-size:10px;color:var(--muted)}.flow{margin-top:22px}.flowline{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.flowline:last-child{border:0}.flowicon{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:rgba(140,240,208,.1);color:var(--accent);font-size:14px}.flowname{font-size:12px;font-weight:650}.flowdesc{font-size:10px;color:var(--soft);margin-top:2px}.status{font-size:9px;padding:5px 8px;border-radius:99px;background:rgba(140,240,208,.1);color:var(--accent)}.status.wait{background:rgba(242,215,154,.1);color:var(--warn)}.visual-foot{display:flex;justify-content:space-between;gap:12px;margin-top:20px;color:var(--soft);font-size:10px}
+    section{padding:82px 0}.section-head{max-width:720px;margin-bottom:38px}.kicker{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.section-head h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.055em;margin:13px 0 14px}.section-head p{color:var(--muted);font-size:17px;margin:0;max-width:680px}.contrast{background:#0c1525;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .case-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:start}.case-copy p{color:var(--muted);font-size:15px;max-width:600px}.case-copy h2{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.055em;margin:13px 0 16px}.case-copy h3{font-size:22px;letter-spacing:-.04em;margin:34px 0 12px}.mail-row{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0 12px}.mail-btn{border:1px solid rgba(192,213,241,.24);border-radius:999px;padding:12px 19px;font-size:14px;font-weight:700;color:var(--text);background:rgba(255,255,255,.025);transition:.2s ease}.mail-btn:hover{border-color:var(--accent);background:rgba(140,240,208,.06)}.hint{color:var(--soft);font-size:12px;max-width:520px}.hint .q{white-space:nowrap;background:rgba(255,255,255,.06);padding:1px 7px;border-radius:6px;color:var(--muted)}
+    .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}.stat{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.stat strong{display:block;font-size:32px;letter-spacing:-.06em;color:var(--accent)}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+    .cta-card{margin-top:34px;border:1px solid rgba(140,240,208,.2);border-radius:20px;padding:26px;background:linear-gradient(145deg,#122a36,#0c1729)}.cta-card p{color:var(--muted);font-size:14px;margin:0 0 16px;max-width:560px}.cta-card .addr{font-size:20px;font-weight:750;letter-spacing:-.03em;color:var(--accent)}
+    .thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.thesis{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel)}.thesis.bad{background:rgba(255,255,255,.018)}.thesis h3{font-size:19px;margin:0 0 10px;letter-spacing:-.03em}.thesis p{color:var(--muted);margin:0;font-size:14px}.tag{display:inline-flex;margin-bottom:17px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--accent)}.bad .tag{color:#f1c68b}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:25px 23px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(20,36,58,.86),rgba(13,23,40,.72));min-height:190px}.stepnum{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.12em}.step h3{font-size:17px;margin:15px 0 8px;letter-spacing:-.03em}.step p{font-size:13px;color:var(--muted);margin:0}.step .tiny{font-size:10px;color:var(--soft);margin-top:13px}
+    .audiences{display:grid;grid-template-columns:1fr 1fr;gap:18px}.audience{border:1px solid var(--line);border-radius:24px;padding:30px;background:var(--panel);position:relative;overflow:hidden}.audience.pro{background:linear-gradient(145deg,#142a39,#101c31)}.audience .label{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase}.audience h3{font-size:27px;letter-spacing:-.05em;margin:12px 0}.audience>p{font-size:14px;color:var(--muted);max-width:470px}.audience ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}.audience li{display:flex;gap:10px;font-size:13px;color:#d5deeb}.check{color:var(--accent);font-weight:900}.audience .footnote{font-size:11px;color:var(--soft);margin-top:24px}
+    .privacy-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}.privacy-visual{border:1px solid var(--line);border-radius:24px;padding:24px;background:linear-gradient(150deg,#14283a,#0e192b)}.local-badge{display:inline-flex;padding:7px 10px;border:1px solid rgba(140,240,208,.25);border-radius:99px;color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.1em}.local-title{font-size:22px;font-weight:750;letter-spacing:-.04em;margin:20px 0}.local-stack{display:grid;gap:9px}.stack-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:12px}.stack-item span:last-child{font-size:10px;color:var(--accent)}.cloud{margin-top:12px;border:1px dashed rgba(138,185,255,.35);border-radius:12px;padding:13px 14px;color:var(--muted);font-size:11px}.privacy-copy h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-.055em;margin:13px 0 18px}.privacy-copy p{color:var(--muted);font-size:15px}.privacy-points{display:grid;gap:13px;margin-top:24px}.privacy-point{display:flex;gap:12px}.privacy-point b{display:block;font-size:13px}.privacy-point small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+    .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.number{padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.number strong{display:block;font-size:35px;letter-spacing:-.07em;color:var(--accent)}.number span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+    .outcome-title{font-size:22px;letter-spacing:-.04em;margin:44px 0 18px}.bar{display:flex;gap:3px;height:16px;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%}.bar .s1{background:#8cf0d0}.bar .s2{background:#8ab9ff}.bar .s3{background:#f2d79a}.bar .s4{background:#e58f7a}.bar .s5{background:#71839d}.legend{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px}.legend div{font-size:11px;color:var(--muted)}.legend b{display:block;font-size:20px;letter-spacing:-.05em;color:var(--text);margin-bottom:3px}.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}.caveat{font-size:11px;color:var(--soft);margin-top:16px;max-width:850px}
+    .faq details.calc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-top:26px;background:rgba(255,255,255,.02)}.faq details.calc summary{font-size:14px;font-weight:700;cursor:pointer;list-style:none}.faq details.calc summary::-webkit-details-marker{display:none}.faq details.calc ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:13px;display:grid;gap:9px}
+    .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.model{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--panel)}.model h3{margin:10px 0 8px;font-size:18px}.model p{font-size:13px;color:var(--muted);margin:0}.model .phase{font-size:10px;color:var(--accent);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.model .price{margin-top:19px;padding-top:16px;border-top:1px solid var(--line);font-size:11px;color:var(--soft)}
+    .limits{display:grid;grid-template-columns:1fr 1fr;gap:16px}.limit{padding:22px 24px;border-left:2px solid var(--accent);background:rgba(255,255,255,.025);border-radius:0 14px 14px 0}.limit h3{font-size:15px;margin:0 0 7px}.limit p{font-size:12px;color:var(--muted);margin:0}
+    .faq{max-width:850px}.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{font-size:15px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";color:var(--accent);font-size:20px;font-weight:400}.faq details[open] summary:after{content:"−"}.faq details p{font-size:13px;color:var(--muted);max-width:760px;margin:12px 0 0}
+    .contact{background:linear-gradient(145deg,#122a36,#0c1729);border:1px solid rgba(140,240,208,.18);border-radius:28px;padding:42px;display:grid;grid-template-columns:1fr .85fr;gap:36px;align-items:center}.contact h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.055em;line-height:1.05;margin:13px 0}.contact p{color:var(--muted);font-size:14px;max-width:540px}.contact-card{background:rgba(5,12,22,.48);border:1px solid var(--line);border-radius:18px;padding:22px}.contact-card strong{font-size:15px}.contact-card p{font-size:12px}.contact-card .btn{width:100%;margin-top:7px}
+    footer{padding:36px 0 46px;color:var(--soft);font-size:11px}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--line);padding-top:24px}.footbrand{color:var(--text);font-weight:750;font-size:15px}.disclaimer{max-width:760px;margin-top:17px;line-height:1.6}
+    html,body{overflow-x:clip}@media(max-width:900px){.hero-grid,.privacy-grid,.case-grid{grid-template-columns:minmax(0,1fr)}.hero-grid>*,.privacy-grid>*,.case-grid>*{min-width:0}.hero{padding-top:70px}.visual{min-height:0}.steps{grid-template-columns:repeat(2,1fr)}.model-grid{grid-template-columns:1fr 1fr}.numbers{grid-template-columns:repeat(2,1fr)}.contact{grid-template-columns:1fr}.navlinks{display:none}.legend{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 32px))}.nav{height:66px}.navcta{padding:10px 13px;font-size:12px}.hero{padding:58px 0 55px}h1{font-size:44px}.lead{font-size:16px}.visual{padding:18px}.metric-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.metric{padding:11px 9px;min-width:0}.metric strong{font-size:20px}.steps,.audiences,.thesis-grid,.model-grid,.limits,.stats3{grid-template-columns:1fr}section{padding:62px 0}.section-head p{font-size:15px}.audience{padding:24px}.numbers{gap:8px}.number{padding:16px}.number strong{font-size:29px}.contact{padding:26px 22px}.footer-row{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="PrivacyGuard"><span class="brandmark">P</span>privacyguard</a>
+      <nav class="navlinks" aria-label="Основная навигация">
+        <a href="#cycle">Как работает</a><a href="#audience">Для кого</a><a href="#privacy">Приватность</a><a href="#numbers">Цифры</a><a href="#faq">Вопросы</a>
+      </nav>
+      <a class="navcta" href="#access">Ранний доступ <span>↗</span></a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Программа для работы с персональными данными</div>
+          <h1>Ваши данные.<br><span>Ваш контроль.</span></h1>
+          <p class="lead">PrivacyGuard помогает системно работать с организациями, которые хранят ваши персональные данные: найти адресатов, подготовить запросы по 152-ФЗ, отследить ответы и не пропустить сроки.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#personal">Для себя <span>→</span></a>
+            <a class="btn btn-secondary" href="#professional">Для специалистов <span>↗</span></a>
+          </div>
+          <p class="micro">Это программа, а не обещание «стереть вас из интернета». Решение об удалении принимает сама организация, часть сведений она вправе хранить по закону.</p>
+        </div>
+        <div class="visual" aria-label="Пример интерфейса PrivacyGuard">
+          <div class="v-top"><span>Рабочее пространство / пример</span><span class="live">локальный контур</span></div>
+          <div class="case-title">Пример дела</div>
+          <div class="case-sub">Один процесс · несколько организаций · единая история</div>
+          <div class="metric-row">
+            <div class="metric"><strong>24</strong><span>организации в деле</span></div>
+            <div class="metric"><strong>08</strong><span>ответов получено</span></div>
+            <div class="metric"><strong>03</strong><span>срока на контроле</span></div>
+          </div>
+          <div class="flow">
+            <div class="flowline"><div class="flowicon">⌕</div><div><div class="flowname">Организация проверена</div><div class="flowdesc">Юрлицо и канал обращения сверены</div></div><span class="status">проверено</span></div>
+            <div class="flowline"><div class="flowicon">↗</div><div><div class="flowname">Обращение подготовлено</div><div class="flowdesc">Документ сформирован по шаблону</div></div><span class="status">готово</span></div>
+            <div class="flowline"><div class="flowicon">✉</div><div><div class="flowname">Ответ зарегистрирован</div><div class="flowdesc">Письмо и вложения сохранены локально</div></div><span class="status">получено</span></div>
+            <div class="flowline"><div class="flowicon">◷</div><div><div class="flowname">Требуется решение</div><div class="flowdesc">Неоднозначный ответ, на проверку</div></div><span class="status wait">человек</span></div>
+          </div>
+          <div class="visual-foot"><span>Документы · события · сроки · доказательства</span><span>пример интерфейса</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="personal-case" class="contrast">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Сценарий Personal: поиск работы</div><h2>Вам отказали один раз. База помнит это каждый раз.</h2></div>
+        <div class="case-grid">
+          <div class="case-copy">
+            <p>Вы откликались, ходили на собеседование, вас не взяли. Запись об этом остаётся в карточке кандидата и лежит рядом с вашим новым резюме.</p>
+            <p style="margin-top:14px">Новое резюме этого не лечит: меняются формулировки, а карточка в базе остаётся прежней. Записанное нельзя улучшить. Его можно потребовать удалить.</p>
+            <h3>Сколько таких карточек у вас? Спросите свою почту</h3>
+            <p>Откройте ящик, с которого рассылали резюме, и поищите одну фразу. Поиск идёт у вас, мы ничего не видим.</p>
+            <div class="mail-row" id="boxes">
+              <a class="mail-btn" target="_blank" rel="noopener" href="https://mail.google.com/mail/u/0/#search/%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%20%D1%80%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5">Gmail</a>
+              <a class="mail-btn" target="_blank" rel="noopener" href="https://mail.yandex.ru/#search?request=%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%20%D1%80%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5">Яндекс Почта</a>
+              <a class="mail-btn" target="_blank" rel="noopener" href="https://e.mail.ru/search/?q_query=%D0%BA%20%D1%81%D0%BE%D0%B6%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D1%8E%20%D1%80%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5">Почта Mail</a>
+            </div>
+            <p class="hint">Кнопка копирует запрос <span class="q">к сожалению резюме</span>. Поиск пустой: вставьте запрос сами.</p>
+            <p style="margin-top:18px">Закон даёт право узнать, что именно о вас хранится, и потребовать удаления. Суд для этого не нужен.</p>
+          </div>
+          <div>
+            <div class="stats3" style="margin-top:0">
+              <div class="stat"><strong>{{emp.contacted}}</strong><span>работодателей получили запрос</span></div>
+              <div class="stat"><strong>{{emp.result}}</strong><span>удалили данные или ответили, что данных нет</span></div>
+              <div class="stat"><strong>{{emp.median_days}} {{emp.median_days|день|дня|дней}}</strong><span>медиана до письма с итогом</span></div>
+            </div>
+            <p class="micro" style="max-width:none">Работодатели в рабочем контуре одного пользователя, с {{started_ru}} по {{generated_ru}}. «Данных нет» не равно подтверждённому удалению, как считаем: в блоке «Цифры».</p>
+            <div class="cta-card">
+              <p>Начните с самого старого письма. Перешлите его на <span class="addr">i@alvovsky.ru</span>: скажем, что эта компания могла сохранить и есть ли смысл идти дальше. Бесплатно.</p>
+              <button type="button" class="btn btn-primary" id="copy">Скопировать адрес</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Другой подход</div><h2>Не просто отправить запрос. Вести весь процесс.</h2><p>Отправка только начало. Важны правильный адресат, подтверждение отправки, содержание ответа, основания хранения и следующий корректный шаг.</p></div>
+        <div class="thesis-grid">
+          <article class="thesis bad"><div class="tag">Обычный сценарий</div><h3>Письмо отправлено. Что дальше?</h3><p>Разрозненные письма, таблицы и напоминания. Сложно понять, кому уже писали, кто ответил, какие сроки прошли и где лежат доказательства.</p></article>
+          <article class="thesis"><div class="tag">Подход PrivacyGuard</div><h3>Единая история каждого запроса</h3><p>Организации, документы, отправка, ответы, сроки, решения и материалы для следующих шагов связаны в одном локальном деле.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cycle" class="contrast">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Рабочий цикл</div><h2>От поиска адресата до следующего обоснованного шага</h2><p>PrivacyGuard соединяет исследование организаций, юридические шаблоны и контроль исполнения в повторяемый процесс.</p></div>
+        <div class="steps">
+          <article class="step"><div class="stepnum">01 / ПОИСК</div><h3>Собрать круг организаций</h3><p>Реестр помогает находить организации, проверять реквизиты и находить новые связи в полученных ответах.</p><div class="tiny">Реестр не охватывает всех, кто может хранить данные.</div></article>
+          <article class="step"><div class="stepnum">02 / ПРОВЕРКА</div><h3>Уточнить адресата</h3><p>Сверить домен, юридическое лицо и канал обращения. Неоднозначные случаи дальше сами не проходят.</p></article>
+          <article class="step"><div class="stepnum">03 / ДОКУМЕНТЫ</div><h3>Подготовить запрос</h3><p>Документы собираются из реквизитов по выбранному сценарию по шаблонам. Языковая модель не сочиняет юридические требования.</p></article>
+          <article class="step"><div class="stepnum">04 / ПЕРЕПИСКА</div><h3>Сохранить отправку и ответ</h3><p>Письма, вложения и подтверждения привязываются к конкретной организации и запросу.</p></article>
+          <article class="step"><div class="stepnum">05 / КОНТРОЛЬ</div><h3>Следить за сроками и ответами</h3><p>Программа разбирает ответы, считает контрольные даты и отмечает случаи, где нужно решение человека.</p></article>
+          <article class="step"><div class="stepnum">06 / ЭСКАЛАЦИЯ</div><h3>Подготовить материалы</h3><p>Если основания есть, программа соберёт пакет доказательств для жалобы в Роскомнадзор или для юриста. Подаёт человек.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="audience">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Два сценария, одно ядро</div><h2>Для личных задач и профессиональной практики</h2><p>Разный масштаб и интерфейс. Общие реестр, правила, шаблоны и контроль сроков.</p></div>
+        <div class="audiences">
+          <article class="audience" id="personal">
+            <div class="label">PrivacyGuard Personal</div><h3>Когда хотите разобраться со своими данными</h3>
+            <p>Личное рабочее пространство, чтобы самому вести запросы и видеть, что происходит после отправки.</p>
+            <ul><li><span class="check">✓</span> Личное дело и список организаций</li><li><span class="check">✓</span> Документы по доступным сценариям</li><li><span class="check">✓</span> История переписки и контроль сроков</li><li><span class="check">✓</span> Понятные статусы: удалили, данных нет, отказ, нужна проверка</li><li><span class="check">✓</span> Выгрузка документов и истории дела</li></ul>
+            <div class="footnote">Для физлиц. Данные, подпись и отправка остаются у вас.</div>
+          </article>
+          <article class="audience pro" id="professional">
+            <div class="label">PrivacyGuard Professional</div><h3>Когда ведёте запросы клиентов</h3>
+            <p>Инструменты для юристов, консультантов и команд, которые ведут несколько дел по единым правилам.</p>
+            <ul><li><span class="check">✓</span> Несколько независимых дел и профилей</li><li><span class="check">✓</span> Реестр операторов и проверка юрлиц</li><li><span class="check">✓</span> Шаблоны, правила, календарь и журнал действий</li><li><span class="check">✓</span> Разбор ответов и очередь ручной проверки</li><li><span class="check">✓</span> Пакеты доказательств для эскалации</li><li><span class="check">✓</span> CLI и MCP для своей AI-среды</li></ul>
+            <div class="footnote">Локальная лицензия. Данные клиентов остаются в вашей инфраструктуре.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="contrast">
+      <div class="wrap privacy-grid">
+        <div class="privacy-visual">
+          <span class="local-badge">LOCAL-FIRST BY DESIGN</span>
+          <div class="local-title">Ваши дела на вашем устройстве</div>
+          <div class="local-stack">
+            <div class="stack-item"><span>Реквизиты и профили</span><span>ЛОКАЛЬНО</span></div>
+            <div class="stack-item"><span>Письма, ответы и вложения</span><span>ЛОКАЛЬНО</span></div>
+            <div class="stack-item"><span>Подпись и доказательства</span><span>ЛОКАЛЬНО</span></div>
+            <div class="stack-item"><span>Разбор ответов</span><span>ЛОКАЛЬНО / ВЫБОР</span></div>
+          </div>
+          <div class="cloud"><b>Облачный справочный слой</b><br>Каталог организаций, публичные реквизиты, версии шаблонов и обновления. Содержимое личных дел туда по умолчанию не загружается.</div>
+        </div>
+        <div class="privacy-copy">
+          <div class="kicker">Архитектура приватности</div><h2>Контроль над данными начинается с архитектуры</h2>
+          <p>PrivacyGuard проектируется как локальная программа со справочным API. Переписку и документы не нужно передавать стороннему сервису.</p>
+          <div class="privacy-points">
+            <div class="privacy-point"><span class="check">✓</span><div><b>Дела хранятся у вас</b><small>Реквизиты, исходящие документы, ответы и доказательства не уходят на сервер PrivacyGuard автоматически.</small></div></div>
+            <div class="privacy-point"><span class="check">✓</span><div><b>Справочное отдельно от личного</b><small>Облачная часть обслуживает каталог и обновления, программа на устройстве работает с вашим делом.</small></div></div>
+            <div class="privacy-point"><span class="check">✓</span><div><b>AI под вашим контролем</b><small>Ответы разбираются локально или у выбранного вами провайдера, передачу текста вы разрешаете явно.</small></div></div>
+            <div class="privacy-point"><span class="check">✓</span><div><b>Ключ подписи остаётся у вас</b><small>PrivacyGuard не получает и не хранит закрытый ключ электронной подписи.</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="numbers">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Основа продукта</div><h2>Не обещания, а работающий конвейер</h2><p>Конвейер работает с {{started_ru}} на данных одного пользователя. Это внутренняя статистика эксплуатации, а не независимая оценка эффективности.</p></div>
+        <div class="numbers">
+          <div class="number"><strong>{{base.registry}}</strong><span>организаций в реестре</span></div>
+          <div class="number"><strong>{{base.doc_types}}</strong><span>типов документов</span></div>
+          <div class="number"><strong>{{base.sent}}</strong><span>отправленных документов</span></div>
+          <div class="number"><strong>{{base.replies}}</strong><span>писем от организаций, без автоответов</span></div>
+        </div>
+        <h3 class="outcome-title">Чем закончились запросы</h3>
+        <div class="bar" aria-hidden="true">
+          <i class="s1" style="flex-grow:{{metrics.deleted}}"></i><i class="s2" style="flex-grow:{{metrics.no_data}}"></i><i class="s3" style="flex-grow:{{metrics.lawful}}"></i><i class="s4" style="flex-grow:{{x.refused_all}}"></i><i class="s5" style="flex-grow:{{metrics.silent}}"></i>
+        </div>
+        <div class="legend">
+          <div><b>{{metrics.deleted}}</b><i class="s1" style="background:#8cf0d0"></i>подтвердили удаление</div>
+          <div><b>{{metrics.no_data}}</b><i class="s2" style="background:#8ab9ff"></i>ответили, что данных нет</div>
+          <div><b>{{metrics.lawful}}</b><i class="s3" style="background:#f2d79a"></i>отказали со ссылкой на закон</div>
+          <div><b>{{x.refused_all}}</b><i class="s4" style="background:#e58f7a"></i>отказали без ясного основания или ответ на разборе</div>
+          <div><b>{{metrics.silent}}</b><i class="s5" style="background:#71839d"></i>пропустили срок ответа</div>
+        </div>
+        <p class="caveat">Из {{metrics.decided}} организаций с итогом. Запрос получили {{metrics.contacted}}, у {{x.open}} срок ещё идёт. Медиана до письма с итогом: {{metrics.median_days}} {{metrics.median_days|день|дня|дней}}.</p>
+        <div class="faq">
+          <details class="calc"><summary>Как считаем</summary>
+            <ul>
+              <li>Единица счёта: организация, которой ушёл хотя бы один запрос на удаление.</li>
+              <li>Итоги: подтвердили удаление; данных нет; отказ со ссылкой на закон; отказ без ясного основания или на разборе; молчание, если срок ответа прошёл без итога.</li>
+              <li>Итоги считаем от организаций с итогом. Тех, у кого срок ещё идёт, не считаем.</li>
+              <li>Срок: календарные дни от первого запроса до первого письма с итогом. Автоответы и «заявка зарегистрирована» ответом не считаем.</li>
+              <li>«Данных нет» не доказывает удаление, поэтому это отдельный исход.</li>
+              <li>Цифры не доказывают, что найдены все организации, и не гарантируют такой же результат другим.</li>
+              <li>Обновлено {{generated_ru}}.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contrast">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Линейка продукта</div><h2>Одно ядро, три продукта</h2><p>Personal и Professional выходят первыми. Registry / API откроем, когда стабилизируются каталог и интерфейс.</p></div>
+        <div class="model-grid">
+          <article class="model"><div class="phase">Первый запуск</div><h3>Personal</h3><p>Для одного человека и одного личного дела. Ведёте запросы сами, без ручной сборки процесса из писем и таблиц.</p><div class="price">Оплата: лицензия на период или на дело, цена после пилота.</div></article>
+          <article class="model"><div class="phase">Для специалистов</div><h3>Professional</h3><p>Для юриста или команды: несколько дел, интеграции и обновляемый справочник.</p><div class="price">Оплата: годовая лицензия и подписка на обновления реестра.</div></article>
+          <article class="model"><div class="phase">Следующий этап</div><h3>Registry / API</h3><p>Доступ к проверенным карточкам организаций, каналам обращений и истории их ответов, без данных конкретных клиентов.</p><div class="price">Оплата: подписка. После первого релиза.</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Честные границы</div><h2>Что PrivacyGuard делает и чего не обещает</h2><p>Доверие важнее громкого обещания. Программа помогает вести юридически значимые действия, но не заменяет решение организации, юриста или госоргана.</p></div>
+        <div class="limits">
+          <article class="limit"><h3>Не все данные можно удалить</h3><p>Организации бывают обязаны хранить сведения по закону или по договору. Банки, например, хранят данные годами.</p></article>
+          <article class="limit"><h3>Реестр не охватывает весь интернет</h3><p>Он растёт, но у него есть пределы. Часть организаций принимает запросы только вручную.</p></article>
+          <article class="limit"><h3>«Данных нет» не доказывает удаление</h3><p>Это отдельный исход, его нельзя смешивать с подтверждённым уничтожением.</p></article>
+          <article class="limit"><h3>Жалобу подаёт человек</h3><p>Программа готовит материалы, подачу и юридически значимые решения выполняете вы или ваш юрист.</p></article>
+          <article class="limit"><h3>Не гарантируем решение организации</h3><p>И не обещаем оффер: решение о найме принимает работодатель.</p></article>
+          <article class="limit"><h3>Не обещаем исчезновение копий</h3><p>Удаление у исходной организации не убирает копии, которые уже попали к третьим лицам.</p></article>
+          <article class="limit"><h3>Мгновенного итога не будет</h3><p>На ответ у организации 10 рабочих дней, срок могут продлить ещё на 5, на удаление до 30 дней.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="contrast">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Вопросы и ответы</div><h2>Перед тем как начать</h2></div>
+        <div class="faq">
+          <details><summary>PrivacyGuard всё сделает за меня?</summary><p>Нет. Это программа: она помогает вести процесс, готовит документы, сохраняет переписку и следит за сроками. Подписываете и отправляете вы сами или под вашим контролем.</p></details>
+          <details><summary>Нужно загружать паспорт и переписку в облако PrivacyGuard?</summary><p>Нет. Личные дела хранятся и обрабатываются на вашем устройстве. До выпуска проверим это техническим аудитом.</p></details>
+          <details><summary>Можно подключить своего AI-помощника?</summary><p>В Professional будут CLI и MCP. Список команд и поддерживаемых сред опубликуем, когда интерфейс стабилизируется.</p></details>
+          <details><summary>PrivacyGuard гарантирует удаление моих данных?</summary><p>Нет. Решение принимает организация, часть сведений она вправе хранить. Программа помогает правильно составить запрос, зафиксировать ответ и выбрать следующий шаг.</p></details>
+          <details><summary>Подойдёт юристу, который ведёт нескольких клиентов?</summary><p>Это основной сценарий Professional. До начала продаж завершаем изоляцию дел и профилей, роли доступа и правовой режим работы с данными клиентов.</p></details>
+          <details><summary>Когда можно купить?</summary><p>Сейчас идёт пилот с ранним доступом. Продажи начнём, когда упакуем установку и проверим подпись, локальный разбор ответов, лицензии и юридические документы.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="kicker">Ранний доступ</div><h2>Проверьте, подходит ли PrivacyGuard под вашу задачу</h2><p>Напишите на i@alvovsky.ru. Для Personal проверим сценарий самостоятельной работы, для Professional обсудим число дел, рабочую среду и требования к хранению.</p></div>
+          <div class="contact-card"><strong>Запросить ранний доступ</strong><p>Выберите направление, это поможет сразу перейти к предметному разговору.</p><a class="btn btn-primary" href="mailto:i@alvovsky.ru?subject=PrivacyGuard%20Personal%3A%20%D1%80%D0%B0%D0%BD%D0%BD%D0%B8%D0%B9%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF">Запросить Personal <span>↗</span></a><a class="btn btn-secondary" style="width:100%;margin-top:9px" href="mailto:i@alvovsky.ru?subject=PrivacyGuard%20Professional">Обсудить Professional <span>↗</span></a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row"><div class="footbrand">privacyguard</div><div>Программа для работы с персональными данными</div><div>Иван Альвовский, 2026 · <a href="/" style="text-decoration:underline">alvovsky.ru</a></div></div>
+      <p class="disclaimer">PrivacyGuard: программа, а не юридическая фирма и не представитель пользователя. Информация на странице не является юридической консультацией. Функции, совместимость, условия лицензии и документы продукта опубликуем отдельно до начала продаж. Не используйте продукт для незаконного доступа к данным, обхода ограничений или сокрытия сведений, которые обязаны раскрывать.</p>
+    </div>
+  </footer>
+  <script>
+  const MAIL='i@alvovsky.ru',QUERY='к сожалению резюме';
+  const copy=t=>{if(navigator.clipboard){navigator.clipboard.writeText(t).catch(()=>{})}};
+  document.querySelectorAll('#boxes a').forEach(a=>a.addEventListener('click',()=>copy(QUERY)));
+  const cb=document.getElementById('copy');
+  if(cb)cb.addEventListener('click',e=>{copy(MAIL);e.target.textContent='Адрес скопирован'});
+  </script>
+</body>
+</html>

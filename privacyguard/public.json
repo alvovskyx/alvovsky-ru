@@ -1,0 +1,99 @@
+{
+ "generated": "2026-11-22",
+ "started": "2026-10-01",
+ "metrics": {
+  "contacted": 161,
+  "decided": 144,
+  "deleted": 34,
+  "no_data": 64,
+  "lawful": 12,
+  "disputed": 2,
+  "refused": 4,
+  "silent": 28,
+  "in_progress": 7,
+  "waiting": 10,
+  "result": 98,
+  "strict": 68,
+  "lawful_pct": 8,
+  "disputed_pct": 1,
+  "refused_pct": 3,
+  "silent_pct": 20,
+  "answered": 123,
+  "median_days": 15,
+  "median_n": 99
+ },
+ "by_type": [
+  {
+   "type": "Площадки и ATS",
+   "contacted": 26,
+   "result": 10,
+   "lawful": 0,
+   "disputed": 0,
+   "refused": 0,
+   "silent": 2,
+   "open": 14,
+   "median_days": 10
+  },
+  {
+   "type": "Названные в ответах",
+   "contacted": 5,
+   "result": 3,
+   "lawful": 1,
+   "disputed": 0,
+   "refused": 0,
+   "silent": 1,
+   "open": 0,
+   "median_days": 30
+  },
+  {
+   "type": "Работодатели",
+   "contacted": 75,
+   "result": 56,
+   "lawful": 4,
+   "disputed": 0,
+   "refused": 3,
+   "silent": 12,
+   "open": 0,
+   "median_days": 14
+  },
+  {
+   "type": "Брокеры данных",
+   "contacted": 13,
+   "result": 5,
+   "lawful": 4,
+   "disputed": 1,
+   "refused": 0,
+   "silent": 2,
+   "open": 1,
+   "median_days": 5
+  },
+  {
+   "type": "Акселераторы и мероприятия",
+   "contacted": 22,
+   "result": 14,
+   "lawful": 0,
+   "disputed": 1,
+   "refused": 0,
+   "silent": 7,
+   "open": 0,
+   "median_days": 18
+  },
+  {
+   "type": "МФО и витрины займов",
+   "contacted": 20,
+   "result": 10,
+   "lawful": 3,
+   "disputed": 0,
+   "refused": 1,
+   "silent": 4,
+   "open": 2,
+   "median_days": 17
+  }
+ ],
+ "base": {
+  "registry": 303,
+  "doc_types": 17,
+  "sent": 289,
+  "replies": 282
+ }
+}
